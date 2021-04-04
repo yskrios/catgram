@@ -2,7 +2,7 @@
   import Comments from "./Comments.svelte";
   import Modal from "./Modal.svelte";
   import Share from "./Share.svelte";
-
+  import { likeCount } from "../store/store";
   import { blur } from "svelte/transition";
   export let username;
   export let location;
@@ -10,9 +10,21 @@
   export let postComment;
   export let comments;
   export let avatar;
-  export let isModal = false;
+  let isModal = false;
+  let like = false;
+  let bookmark = false;
+
   function handleClick() {
     isModal = !isModal;
+  }
+
+  function handleLike() {
+    like = !like;
+    if (like) {
+      likeCount.update((n) => n + 1);
+    } else {
+      likeCount.update((n) => n - 1);
+    }
   }
 </script>
 
@@ -36,17 +48,25 @@
       </div>
     </div>
     <div class="card-photo">
-      <figure>
+      <figure on:dblclick={handleLike}>
         <img src={photo} alt={username} />
       </figure>
     </div>
     <div class="card-icons">
       <div class="card-icons-first">
-        <i class="fas fa-heart" />
+        <i
+          class="fas fa-heart"
+          on:click={handleLike}
+          class:active-like={like}
+        />
         <i class="fas fa-paper-plane" on:click={handleClick} />
       </div>
       <div class="card-icons-second">
-        <i class="fas fa-bookmark" />
+        <i
+          class="fas fa-bookmark"
+          class:active-bookmark={bookmark}
+          on:click={() => (bookmark = !bookmark)}
+        />
       </div>
     </div>
     <div class="card-description">
@@ -135,7 +155,7 @@
   .card-description span {
     font-size: 14px;
   }
-  /* .active-like {
+  .active-like {
     color: #bc1888;
     animation: bounce linear 0.8s;
     animation-iteration-count: 1;
@@ -143,7 +163,7 @@
   }
   .active-bookmark {
     color: #f09433;
-  } */
+  }
 
   @keyframes bounce {
     0% {
