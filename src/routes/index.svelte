@@ -1,18 +1,22 @@
+<script context="module">
+  export async function preload() {
+    let data = {};
+    const response = await this.fetch("https://kittygram-api.now.sh/");
+    data = await response.json();
+    return { data };
+  }
+</script>
+
 <script>
-  import Header from "../components/Header.svelte";
   import Sidebar from "../components/Sidebar.svelte";
   import TimeLine from "../components/TimeLine.svelte";
   import Main from "../components/Main.svelte";
-  import { onMount } from "svelte";
-
-  let data = {};
-  const API = "https://kittygram-api.now.sh/";
-  onMount(async () => {
-    const response = await fetch(API);
-    data = await response.json();
-  });
+  export let data;
 </script>
 
+<svelte:head>
+  <title>CATGRAM</title>
+</svelte:head>
 
 <Main>
   <TimeLine posts={data.posts} />
