@@ -1,27 +1,25 @@
 {
-  "name": "catgram",
+  "name": "pugstagram",
   "version": "1.0.0",
-  "description": "Red social para visualizar fotos de gatos",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack serve --mode development"
+    "dev": "sapper dev",
+    "build": "sapper build",
+    "export": "sapper export",
+    "start": "node __sapper__/build"
   },
-  "author": "",
+  "author": "Oscar Barajas <oscar@platzi.com>",
   "license": "MIT",
   "dependencies": {
-    "svelte": "^3.37.0"
+    "compression": "^1.7.4",
+    "polka": "^0.5.2",
+    "sirv": "^0.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.13.12",
-    "babel-loader": "^8.2.2",
-    "html-loader": "^2.1.2",
-    "html-webpack-plugin": "^5.3.1",
-    "svelte-loader": "^3.0.0",
-    "webpack": "^5.30.0",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "svelte": "^3.18.2",
+    "sapper": "^0.27.12",
+    "svelte-loader": "^2.13.6",
+    "webpack": "^4.41.6"
   }
 }

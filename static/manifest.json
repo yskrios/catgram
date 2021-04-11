@@ -1,0 +1,20 @@
+{
+  "background": "#fff",
+  "theme_color": "#333",
+  "name": "CATGRAM",
+  "short_name": "cg",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-192.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
